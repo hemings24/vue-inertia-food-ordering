@@ -1,0 +1,397 @@
+***CONTINUE REVIEWING FROM LESSON 8/17
+
+laravel new vue-inertia-food-delivery
+cd vue-inertia-food-delivery
+.env
+composer require laravel/breeze
+php artisan breeze:install vue
+
+npm install --save-dev @rushstack/eslint-patch @vue/eslint-config-prettier eslint eslint-plugin-vue prettier
+Create new .eslintrc.cjs file in project directory: .eslintrc.cjs
+Create new .prettierrc.json file in project directory: .prettierrc.json
+Define lint command in package.json file: package.json
+npm run lint
+
+
+php artisan make:seed UserSeeder
+
+php artisan make:model Permission -ms
+php artisan make:model Role -ms
+php artisan make:migration create_permission_role_table
+php artisan make:migration create_role_user_table
+php artisan make:model City -ms
+php artisan make:model Restaurant -m
+php artisan make:model Category -m
+php artisan make:model Product -m
+php artisan make:model Order -m
+php artisan make:model OrderItem -m
+php artisan make:migration add_restaurant_id_column_to_users_table
+
+php artisan make:factory RestaurantFactory
+php artisan make:factory CategoryFactory
+php artisan make:factory ProductFactory
+
+php artisan make:controller HomeController
+php artisan make:controller RestaurantController
+php artisan make:controller Admin/RestaurantController
+php artisan make:controller Vendor/MenuController
+php artisan make:controller Vendor/CategoryController
+php artisan make:controller Vendor/ProductController
+php artisan make:controller Vendor/StaffMemberController
+php artisan make:controller Customer/CartController
+php artisan make:controller Customer/OrderController
+php artisan make:controller Staff/OrderController
+
+php artisan make:request Admin/StoreRestaurantRequest
+php artisan make:request Admin/UpdateRestaurantRequest
+php artisan make:request Vendor/StoreCategoryRequest
+php artisan make:request Vendor/UpdateCategoryRequest
+php artisan make:request Vendor/StoreProductRequest
+php artisan make:request Vendor/UpdateProductRequest
+
+php artisan make:notification RestaurantOwnerInvitation
+php artisan make:notification RestaurantStaffInvitation --markdown=mail.restaurant.staff-invitation
+php artisan make:notification NewOrderCreated --markdown=mail.order.new-order-created
+
+
+*********************************************************************
+
+
+database:
+mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_delivery"
+php artisan migrate:install
+
+database/migrations/create_users_table
+database/migrations/create_permissions_table
+database/migrations/create_roles_table
+database/migrations/create_permission_role_table
+database/migrations/create_role_user_table
+database/migrations/create_cities_table
+database/migrations/create_restaurants_table
+database/migrations/create_categories_table
+database/migrations/create_products_table
+database/migrations/create_orders_table
+database/migrations/create_order_items_table
+database/migrations/add_restaurant_id_column_to_users_table
+php artisan migrate
+
+database/seeders/DatabaseSeeder
+database/seeders/PermissionSeeder
+database/seeders/RoleSeeder
+app/Enums/RoleName
+database/seeders/CitySeeder
+database/seeders/UserSeeder
+
+database/factories/UserFactory
+database/factories/ProductFactory
+database/factories/CategoryFactory
+database/factories/RestaurantFactory
+
+php artisan db:seed / php artisan migrate:fresh --seed
+
+
+*********************************************************************
+
+resources/js/Layouts/AuthenticatedLayout.vue
+
+app/Models/User
+app/Models/Permission
+app/Models/Role
+app/Enums/RoleName
+app/Http/Controllers/HomeController
+app/Http/Controllers/Auth/RegisteredUserController
+app/Http/Controllers/Vendor/StaffMemberController
+app/Http/Requests/Vendor/StoreStaffMemberRequest
+resources/js/Pages/Vendor/Staff/Show.vue
+resources/js/Pages/Vendor/Staff/Partials/AddStaffMemberForm.vue
+resources/js/Pages/Vendor/Staff/Partials/StaffMemberManager.vue
+
+app/Models/City
+
+app/Models/Restaurant
+
+app/Http/Controllers/RestaurantController
+resources/js/Pages/Home.vue
+resources/js/Pages/Restaurant.vue
+
+app/Http/Controllers/Admin/RestaurantController
+app/Http/Requests/Admin/StoreRestaurantRequest
+app/Http/Requests/Admin/UpdateRestaurantRequest
+resources/js/Pages/Admin/Restaurants/Index.vue
+resources/js/Pages/Admin/Restaurants/Create.vue
+resources/js/Pages/Admin/Restaurants/Edit.vue
+
+HERE*****************
+app/Notifications/RestaurantOwnerInvitation
+resources/views/mail/restaurant/owner-invitation.blade
+app/Notifications/RestaurantStaffInvitation
+resources/views/mail/restaurant/staff-invitation.blade
+
+
+app/Models/Category
+app/Http/Controllers/Vendor/CategoryController
+app/Http/Requests/Vendor/StoreCategoryRequest
+app/Http/Requests/Vendor/UpdateCategoryRequest
+resources/js/Pages/Vendor/Categories/Create.vue
+resources/js/Pages/Vendor/Categories/Edit.vue
+
+app/Models/Product
+app/Http/Controllers/Vendor/ProductController
+app/Http/Requests/Vendor/StoreProductRequest
+app/Http/Requests/Vendor/UpdateProductRequest
+resources/js/Pages/Vendor/Products/Create.vue
+resources/js/Pages/Vendor/Products/Edit.vue
+
+app/Models/Order
+app/Models/OrderItem
+app/Enums/OrderStatus
+app/Http/Controllers/Vendor/MenuController
+app/Http/Controllers/Customer/OrderController
+app/Http/Controllers/Customer/CartController
+app/Http/Controllers/Staff/OrderController
+app/Http/Requests/Customer/StoreOrderRequest
+app/Http/Requests/Staff/UpdateOrderRequest
+resources/js/Pages/Vendor/Menu.vue
+resources/js/Pages/Customer/Cart.vue
+resources/js/Pages/Customer/Orders.vue
+resources/js/Pages/Staff/Orders.vue
+
+app/Notifications/NewOrderCreated
+resources/views/mail/order/new-order-created.blade
+
+
+routes/web
+routes/admin
+routes/vendor
+routes/customer
+routes/staff
+
+
+resources/js/Components/TextInput.vue
+resources/js/Components/TextareaInput.vue
+resources/js/Components/SelectInput.vue
+resources/js/Components/InputError.vue
+resources/js/Components/PrimaryButton.vue
+resources/js/Components/SecondaryButton.vue
+resources/js/Components/DangerButton.vue
+
+
+app/Http/Middleware/HandleInertiaRequests
+
+app/Providers/AuthServiceProvider  (auth gate)
+app/Providers/RouteServiceProvider
+
+
+Include all colors and define color aliases in TailwindCSS config:
+resources/css/app.css
+resources/js/app.js
+resources/js/Support/can.js
+tailwind.config.js
+
+
+**********************************************************************
+
+admin:  admin@admin.com  password
+vendor:  fbednar@example.com  password
+staff:  mozelle74@example.net  password
+customer:  customer@admin.com  password
+
+**********************************************************************
+
+
+============================================================
+
+laravel new vue-inertia-food-delivery
+cd vue-inertia-food-delivery
+.env
+composer require laravel/breeze
+php artisan breeze:install vue
+
+npm install --save-dev @rushstack/eslint-patch @vue/eslint-config-prettier eslint eslint-plugin-vue prettier
+Create new .eslintrc.cjs file in project directory: .eslintrc.cjs
+Create new .prettierrc.json file in project directory: .prettierrc.json
+Define lint command in package.json file: package.json
+npm run lint
+
+
+
+php artisan make:seed UserSeeder
+
+php artisan make:model Permission -ms
+php artisan make:model Role -ms
+php artisan make:migration create_permission_role_table
+php artisan make:migration create_role_user_table
+php artisan make:model City -ms
+php artisan make:model Restaurant -m
+php artisan make:model Category -m
+php artisan make:model Product -m
+php artisan make:model Order -m
+php artisan make:model OrderItem -m
+php artisan make:migration add_restaurant_id_column_to_users_table
+
+php artisan make:factory RestaurantFactory
+php artisan make:factory CategoryFactory
+php artisan make:factory ProductFactory
+
+php artisan make:controller HomeController
+php artisan make:controller RestaurantController
+php artisan make:controller Admin/RestaurantController
+php artisan make:controller Vendor/MenuController
+php artisan make:controller Vendor/CategoryController
+php artisan make:controller Vendor/ProductController
+php artisan make:controller Vendor/StaffMemberController
+php artisan make:controller Customer/CartController
+php artisan make:controller Customer/OrderController
+php artisan make:controller Staff/OrderController
+
+php artisan make:request Admin/StoreRestaurantRequest
+php artisan make:request Admin/UpdateRestaurantRequest
+php artisan make:request Vendor/StoreCategoryRequest
+php artisan make:request Vendor/UpdateCategoryRequest
+php artisan make:request Vendor/StoreProductRequest
+php artisan make:request Vendor/UpdateProductRequest
+
+php artisan make:notification RestaurantOwnerInvitation
+php artisan make:notification RestaurantStaffInvitation --markdown=mail.restaurant.staff-invitation
+php artisan make:notification NewOrderCreated --markdown=mail.order.new-order-created
+
+
+
+database:
+mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_delivery"
+php artisan migrate:install
+
+database/migrations/create_users_table
+database/migrations/create_permissions_table
+database/migrations/create_roles_table
+database/migrations/create_permission_role_table
+database/migrations/create_role_user_table
+database/migrations/create_cities_table
+database/migrations/create_restaurants_table
+database/migrations/create_categories_table
+database/migrations/create_products_table
+database/migrations/create_orders_table
+database/migrations/create_order_items_table
+database/migrations/add_restaurant_id_column_to_users_table
+php artisan migrate
+
+database/factories/UserFactory
+database/factories/RestaurantFactory
+database/factories/CategoryFactory
+database/factories/ProductFactory
+
+database/seeders/UserSeeder
+database/seeders/PermissionSeeder
+database/seeders/RoleSeeder
+database/seeders/CitySeeder
+database/seeders/DatabaseSeeder
+php artisan db:seed / php artisan migrate:fresh --seed
+
+
+*******************************************************
+
+
+app/Models/User
+app/Models/Permission
+app/Models/Role
+app/Models/City
+app/Models/Restaurant
+app/Models/Category
+app/Models/Product
+app/Models/Order
+app/Models/OrderItem
+
+
+app/Http/Controllers/HomeController
+app/Http/Controllers/RestaurantController
+app/Http/Controllers/Auth/RegisteredUserController
+app/Http/Controllers/Admin/RestaurantController
+app/Http/Controllers/Vendor/MenuController
+app/Http/Controllers/Vendor/CategoryController
+app/Http/Controllers/Vendor/ProductController
+app/Http/Controllers/Vendor/StaffMemberController
+app/Http/Controllers/Customer/CartController
+app/Http/Controllers/Customer/OrderController
+app/Http/Controllers/Staff/OrderController
+
+
+app/Http/Middleware/HandleInertiaRequests
+
+
+app/Http/Requests/Admin/StoreRestaurantRequest
+app/Http/Requests/Admin/UpdateRestaurantRequest
+app/Http/Requests/Vendor/StoreCategoryRequest
+app/Http/Requests/Vendor/UpdateCategoryRequest
+app/Http/Requests/Vendor/StoreProductRequest
+app/Http/Requests/Vendor/UpdateProductRequest
+app/Http/Requests/Vendor/StoreStaffMemberRequest
+app/Http/Requests/Customer/StoreOrderRequest
+app/Http/Requests/Staff/UpdateOrderRequest
+
+
+app/Enums/RoleName
+app/Enums/OrderStatus
+
+
+app/Notifications/RestaurantOwnerInvitation
+resources/views/mail/restaurant/owner-invitation.blade
+
+app/Notifications/RestaurantStaffInvitation
+resources/views/mail/restaurant/staff-invitation.blade
+
+app/Notifications/NewOrderCreated
+resources/views/mail/order/new-order-created.blade
+
+
+Auth Gate:
+app/Providers/AuthServiceProvider
+
+app/Providers/RouteServiceProvider
+
+
+
+resources/js/Layouts/AuthenticatedLayout.vue
+
+resources/js/Pages/Home.vue
+resources/js/Pages/Restaurant.vue
+
+resources/js/Pages/Admin/Restaurants/Index.vue
+resources/js/Pages/Admin/Restaurants/Create.vue
+resources/js/Pages/Admin/Restaurants/Edit.vue
+
+resources/js/Pages/Vendor/Menu.vue
+resources/js/Pages/Vendor/Categories/Create.vue
+resources/js/Pages/Vendor/Categories/Edit.vue
+resources/js/Pages/Vendor/Products/Create.vue
+resources/js/Pages/Vendor/Products/Edit.vue
+resources/js/Pages/Vendor/Staff/Show.vue
+resources/js/Pages/Vendor/Staff/Partials/AddStaffMemberForm.vue
+resources/js/Pages/Vendor/Staff/Partials/StaffMemberManager.vue
+
+resources/js/Pages/Staff/Orders.vue
+
+resources/js/Pages/Customer/Cart.vue
+resources/js/Pages/Customer/Orders.vue
+
+resources/js/Components/TextInput.vue
+resources/js/Components/TextareaInput.vue
+resources/js/Components/SelectInput.vue
+resources/js/Components/InputError.vue
+resources/js/Components/PrimaryButton.vue
+resources/js/Components/SecondaryButton.vue
+resources/js/Components/DangerButton.vue
+
+
+routes/web
+routes/admin
+routes/vendor
+routes/customer
+routes/staff
+
+
+Include all colors and define color aliases in TailwindCSS config:
+resources/css/app.css
+resources/js/app.js
+resources/js/Support/can.js
+tailwind.config.js
+
