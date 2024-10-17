@@ -1,7 +1,7 @@
 ***CONTINUE REVIEWING FROM LESSON 8/17
 
-laravel new vue-inertia-food-delivery
-cd vue-inertia-food-delivery
+laravel new vue-inertia-food-ordering
+cd vue-inertia-food-ordering
 .env
 composer require laravel/breeze
 php artisan breeze:install vue
@@ -58,7 +58,7 @@ php artisan make:notification NewOrderCreated --markdown=mail.order.new-order-cr
 
 
 database:
-mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_delivery"
+mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_ordering"
 php artisan migrate:install
 
 database/migrations/create_users_table
@@ -201,8 +201,8 @@ customer:  customer@admin.com  password
 
 ============================================================
 
-laravel new vue-inertia-food-delivery
-cd vue-inertia-food-delivery
+laravel new vue-inertia-food-ordering
+cd vue-inertia-food-ordering
 .env
 composer require laravel/breeze
 php artisan breeze:install vue
@@ -258,7 +258,7 @@ php artisan make:notification NewOrderCreated --markdown=mail.order.new-order-cr
 
 
 database:
-mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_delivery"
+mysql -uroot -p -e "CREATE DATABASE vue_inertia_food_ordering"
 php artisan migrate:install
 
 database/migrations/create_users_table
