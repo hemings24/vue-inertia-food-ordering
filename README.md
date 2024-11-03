@@ -20,8 +20,8 @@ User Logins
 -----------
 admin:    admin@admin.com        |  password
 <br>
-vendor:   fbednar@example.com    |  password
+vendor:   vendor@vendor.com      |  password
 <br>
-staff:    mozelle74@example.net  |  password
+staff:    staff@staff.com        |  password
 <br>
-customer: customer@admin.com     |  password
+customer: customer@customer.com  |  password
