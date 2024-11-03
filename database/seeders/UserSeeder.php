@@ -15,12 +15,13 @@ class UserSeeder extends Seeder
       $this->createAdminUser();
       $this->createVendorUser();
       $this->createCustomerUser();
+      $this->createStaffUser();
    }
 
    public function createAdminUser()
    {
       User::create([
-         'name'     => 'Admin User',
+         'name'     => 'Admin',
          'email'    => 'admin@admin.com',
          'password' => bcrypt('password'),
       ])->roles()->sync(Role::where('name', RoleName::ADMIN->value)->first());
@@ -29,8 +30,8 @@ class UserSeeder extends Seeder
    public function createVendorUser()
    {
       $vendor = User::create([
-         'name'     => 'Restaurant owner',
-         'email'    => 'vendor@admin.com',
+         'name'     => 'Restaurant Owner',
+         'email'    => 'vendor@vendor.com',
          'password' => bcrypt('password'),
       ]);
 
@@ -46,11 +47,22 @@ class UserSeeder extends Seeder
    public function createCustomerUser()
    {
       $customer = User::create([
-         'name'     => 'Loyal Customer',
-         'email'    => 'customer@admin.com',
+         'name'     => 'Customer',
+         'email'    => 'customer@customer.com',
          'password' => bcrypt('password'),
       ]);
 
       $customer->roles()->sync(Role::where('name', RoleName::CUSTOMER->value)->first());
+   }
+
+   public function createStaffUser()
+   {
+      $staff = User::create([
+         'name'     => 'Staff',
+         'email'    => 'staff@staff.com',
+         'password' => bcrypt('password'),
+      ]);
+
+      $staff->roles()->sync(Role::where('name', RoleName::STAFF->value)->first());
    }
 }
